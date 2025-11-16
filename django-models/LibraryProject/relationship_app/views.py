@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import DetailView
-from .models import Book, Library
+from .models import Book, Library    # ⬅ THIS IS IMPORTANT
 
 
 # -----------------------------------------
@@ -8,9 +8,6 @@ from .models import Book, Library
 # -----------------------------------------
 
 def list_books(request):
-    """
-    Displays all books and their authors.
-    """
     books = Book.objects.all()
     return render(request, "relationship_app/list_books.html", {"books": books})
 
@@ -20,9 +17,6 @@ def list_books(request):
 # -----------------------------------------
 
 class LibraryDetailView(DetailView):
-    """
-    Displays details of a specific library and its books.
-    """
     model = Library
     template_name = "relationship_app/library_detail.html"
     context_object_name = "library"
